@@ -18,8 +18,20 @@ function getResult(a, b, c) {
 
 // Задание 2
 function getAverageMark(marks) {
-	let averageMark = calcSumMarks(marks) / marks.length;
+	if (marks.length > 5) {
+		console.log("Подсчет будет произведен только по первым 5 оценкам");
+		marks.splice (4);
+	}
+
+	let averageMark;
   
+  if (marks.length === 0) {
+    return 0;
+  } else {
+		averageMark = calcSumMarks(marks) / marks.length;
+		return Math.round(averageMark);
+	}
+
 	function calcSumMarks(marks) {
 		let sumMarks = 0;
 		for (let i = 0; i < marks.length; i++) {
@@ -27,15 +39,6 @@ function getAverageMark(marks) {
 		}
 		return sumMarks;
 	} 
-  
-  if (marks.length === 0) {
-    return 0;
-  } else if (marks.length > 5) {
-		console.log("Подсчет будет произведен только по первым 5 оценкам");
-		let marks2 = marks.slice(0, 5);
-    averageMark = calcSumMarks(marks2) / 5;
-	}
-	return Math.round(averageMark);
 }
 
 // Задание 3
