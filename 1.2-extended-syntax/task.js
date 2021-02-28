@@ -28,9 +28,16 @@ function getAverageMark(marks) {
   if (marks.length === 0) {
     return 0;
   } else {
-		averageMark = calcSumMarks(marks) / marks.length;
+		let sumMarks = 0;
+		for (let i = 0; i < marks.length; i++) {
+			sumMarks += marks[i];
+		}
+		averageMark = sumMarks / marks.length;
 		return Math.round(averageMark);
 	}
+}
+
+/* функция для подсчета суммы
 
 	function calcSumMarks(marks) {
 		let sumMarks = 0;
@@ -39,7 +46,8 @@ function getAverageMark(marks) {
 		}
 		return sumMarks;
 	} 
-}
+	*/
+
 
 // Задание 3
 function askDrink(name, dateOfBirthday){
@@ -53,9 +61,9 @@ function askDrink(name, dateOfBirthday){
 	let birthDay = dateOfBirthday.getDate();
 
 	if (ageCalculation (todayYear, todayMonth, todayDay, birthYear, birthMonth, birthDay) >= 18) {
-		result = `Не желаете ли олд-фэшн, ${name}?`;
+		return `Не желаете ли олд-фэшн, ${name}?`;
 	} else {
-		result = `Сожалею, ${name}, но я не могу вам продать алкоголь. Могу предложить вам замечательный клюквенный компот!`;
+		return `Сожалею, ${name}, но я не могу вам продать алкоголь. Могу предложить вам замечательный клюквенный компот!`;
 	}
 
 	function ageCalculation (todayYear, todayMonth, todayDay, birthYear, birthMonth, birthDay) {
@@ -67,6 +75,4 @@ function askDrink(name, dateOfBirthday){
 		}
 		return age;
 	}
-
-	return result;
 }
