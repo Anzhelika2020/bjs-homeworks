@@ -1,5 +1,7 @@
 "use strict";
 
+// задание 1
+
 function calculateTotalMortgage(percent, contribution, amount, date) {
 	percent = parseFloat(percent);
 	contribution = parseFloat(contribution);
@@ -53,7 +55,15 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
 
 }
 
+
+// задание 2
+
 function getGreeting(name) {
-    // код для задачи №2 писать здесь
-    // return greeting;
+	if (name == "" || name == undefined || name == " ") {
+		name = "Аноним";
+	} 
+
+	let	greeting = `Привет, мир! Меня зовут ${name}.`
+	console.log(greeting);
+	return greeting;
 }
