@@ -51,7 +51,6 @@ function getAverageMark(marks) {
 
 // Задание 3
 function askDrink(name, dateOfBirthday){
-	let result;
 	let todayDate = new Date();
 	let todayYear = todayDate.getFullYear();
 	let birthYear = dateOfBirthday.getFullYear();
