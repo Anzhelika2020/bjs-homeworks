@@ -89,3 +89,41 @@ let data = {
   french: [4, 4],
 };
 console.log(getAverageScore(data));
+
+// Задание 3
+
+function getPersonData(secretData) {
+  let personData = {};
+
+  if ("aaa" in secretData) {
+    personData.firstName = secretData.aaa;
+  };
+
+  if ("bbb" in secretData) {
+    personData.lastName = secretData.bbb;
+  };
+
+  let secret;
+
+  for (let property in personData) {
+    secret = personData[property];
+    personData[property] = getDecodedValue(secret);
+  };
+ 
+  return personData;
+}
+
+function getDecodedValue(secret) {
+	if (secret === 0) {
+		return "Родриго";
+	} else if (secret === 1) {
+		return "Эмильо";
+	};
+};
+
+let secretData = {
+	aaa: 0,
+	bbb: 0,
+};
+
+console.log(getPersonData(secretData));
