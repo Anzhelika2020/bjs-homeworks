@@ -47,6 +47,7 @@ function showSolutionsMessage(a, b, c) {
 
 console.log(showSolutionsMessage(7, 20, -3));
 
+
 // Задание 2
 
 function getAverageMark(marks) {
@@ -89,6 +90,7 @@ let data = {
   french: [4, 4],
 };
 console.log(getAverageScore(data));
+
 
 // Задание 3
 
