@@ -45,24 +45,17 @@ console.log(sherlock.state); //100
 */
 
 class Magazine extends PrintEditionItem {
-
 	constructor (name, releaseDate, pagesCount) {
-
 		super(name, releaseDate, pagesCount);
-
 		this.type = "magazine";
 	};
 };
 
 
 class Book extends PrintEditionItem {
-
 	constructor (author, name, releaseDate, pagesCount) {
-
 		super(name, releaseDate, pagesCount);
-
 		this.type = "book";
-
 		this.author = author;
 	};
 };
@@ -114,13 +107,16 @@ class Library {
 
 	addBook(book) {
 		if (book.state > 30) {
+			
 			this.books.push(book);
 		};	
 	}
 
 	findBookBy(type, value) {
 		for (let i = 0; i < this.books.length; i++) {
+
 			if (this.books[i][type] === value) {
+
 				return this.books[i];
 			};
 		};
@@ -131,7 +127,9 @@ class Library {
 
 	giveBookByName(bookName) {
 		for (let i = 0; i < this.books.length; i++) {
+
 			if (this.books[i]["name"] === bookName) {
+
 				return this.books.splice(i, 1)[0];
 			};
 		};
@@ -191,4 +189,100 @@ console.log("Количество книг после возврата: " + libr
 
 
 // Задача 3
+
+
+class StudentLog {
+	
+	constructor (nameStudent) {
+		this.nameStudent = nameStudent;
+
+		this.subjects = ["algebra", "geometry", "russian", "history", "music", "english", "french"];
+
+		for (let i = 0; i < this.subjects.length; i++) {
+			this[this.subjects[i]] = [];
+		};
+	};
+
+	getName () {
+		return this.nameStudent;
+	};
+
+	addGrade(grade, subject) {
+		if (subject in this === false) {
+
+			return `Вы пытались поставить оценку ${grade} по предмету ${subject}. Такого предмета в журнале нет.`;
+		};
+
+		if (isNaN(grade) || grade <= 0 || grade > 5 || !Number.isInteger(grade)) {
+
+			return `Вы пытались поставить оценку ${grade} по предмету ${subject}. Допускаются только целые числа от 1 до 5. \nТекущее количество оценок по данному предмету ${this[subject].length}`;
+
+		} else {
+
+			return `Оценка добавлена. Текущее количество оценок по данному предмету ${this[subject].push(grade)}.`;
+		};
+	};
+
+	getAverageBySubject(subject) {
+		if (subject in this === false || this[subject].length === 0) {
+			return 0;
+
+		} else {
+			let sumMarks = 0;
+
+			for (let i = 0; i < this[subject].length; i++) {
+				sumMarks += this[subject][i];
+			};
+			
+			return sumMarks / this[subject].length;
+		};
+	};
+
+	getTotalAverage() {
+		let amtAverage = 0;
+		let sumAverage = 0;
+		let key;
+
+		for(let i = 0; i < this.subjects.length; i++) {
+			key = this.subjects[i];
+
+			amtAverage += this[key].length;
+
+			for (let j = 0; j < this[key].length; j++) {
+				sumAverage += this[key][j];
+			};
+		};
+
+		return sumAverage / amtAverage;
+	};
+};
+
+
+/*
+проверка
+
+const log = new StudentLog('Олег Никифоров');
+
+console.log(log.getName()); // Олег Никифоров
+
+log.addGrade(3, 'algebra');
+log.addGrade(5, 'algebra');
+log.addGrade(5, 'history');
+log.addGrade(5, 'history');
+
+console.log(log.getTotalAverage()); 4.5
+
+console.log(log.addGrade('отлично!', 'math'));
+
+console.log(log.addGrade(0, 'algebra'));
+
+console.log(log.addGrade(5, 'geometry'));
+
+console.log(log.addGrade(25, 'geometry'));
+
+console.log(log.getAverageBySubject('algebra')); // 4
+
+console.log(log.getAverageBySubject('math')); // 0
+
+*/
 
