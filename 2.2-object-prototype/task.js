@@ -3,8 +3,8 @@
 //задача 1
 
 String.prototype.isPalindrome = function isPalindrome() {
-	let string = this.toLowerCase().replace(/\s+/g, "").split("");
-  return string.join("") === string.reverse().join("");
+	let string = this.toLowerCase().replace(/\s+/g, "").split("");	
+	return string.join("") === string.reverse().join("");
 }
 
 "А роза упала на лапу Азора".isPalindrome();
@@ -13,18 +13,18 @@ String.prototype.isPalindrome = function isPalindrome() {
 
 function getAverageMark(marks) {
 	let averageMark;
-  
-  if (marks.length === 0) {
-    return 0;
+
+	if (marks.length === 0) {
+		return 0;
   } else {
 		let sumMarks = 0;
 		for (let i = 0; i < marks.length; i++) {
 			sumMarks += marks[i];
-		}
+		};
 		averageMark = sumMarks / marks.length;
-		let roundedAverage = Math.round(averageMark);
+		const roundedAverage = Math.round(averageMark);
 		return roundedAverage;
-	}
+	};
 }
 
 //задача 3
@@ -35,7 +35,7 @@ function getAverageMark(marks) {
 
 function checkBirthday(birthday) {
 	let now = Date.now();
-	birthday = +new Date(birthday);
+	birthday = +new Date(birthday);	//или const parsedBirthday = new Date(birthday).getTime();
 	let diff = now - birthday;
 	let age = diff / (365.25 * 24 * 60 * 60 * 1000);
 	return age >= 18;
@@ -46,6 +46,8 @@ function checkBirthday(birthday) {
 function checkBirthday(birthday) {
 	let now = new Date();
 	birthday = new Date(birthday);
+	//или лучше было сделать так 
+	//const parsedBirthday = new Date(birthday);
 
 	let age = now.getFullYear() - birthday.getFullYear();
 		if (now.getMonth() < birthday.getMonth()) {
