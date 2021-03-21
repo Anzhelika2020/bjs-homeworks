@@ -27,9 +27,19 @@ function getReliableWeaponsNames(durabilityValue) {
   return reliableWeaponsNames;
 };
 
+function getTotalDamage() {
+  let attacksArray = weapons.map(weapons => weapons.attack);
+
+  let totalDamage = attacksArray.reduce((sum, elem) => sum + elem);
+
+  return totalDamage;
+};
+
+
 
 /*
-второй вариант написания кода
+второй вариант где используется два метода filter и map
+функция getReliableWeaponsNames() 
 
 function getReliableWeaponsNames(durabilityValue) {
 
@@ -48,13 +58,5 @@ function getReliableWeaponsNames(durabilityValue) {
   };
 };
 */
-
-function getTotalDamage() {
-  let attacksArray = weapons.map(weapons => weapons.attack);
-
-  let totalDamage = attacksArray.reduce((sum, elem) => sum + elem);
-  
-  return totalDamage;
-};
 
 
