@@ -5,14 +5,11 @@ const weapons = [
 ];
 
 function getNames() {
-  let namesWeapons = weapons.map(weapons => weapons.name);
-  return namesWeapons;
+  return weapons.map(weapons => weapons.name);
 };
 
 function getCountReliableWeapons(durabilityValue) {
-  let reliableWeapons = weapons.filter(weapons => weapons.durability > durabilityValue);
-  
-  return reliableWeapons.length;
+  return weapons.filter(weapons => weapons.durability > durabilityValue).length;
 };
 
 function hasReliableWeapons(durabilityValue) {
@@ -20,13 +17,11 @@ function hasReliableWeapons(durabilityValue) {
 };
 
 function getReliableWeaponsNames(durabilityValue) {
-  let reliableWeaponsNames = weapons
+  return weapons
   .filter(weapons => weapons.durability > durabilityValue)
   .map(weapons => weapons.name);
-
-  return reliableWeaponsNames;
 };
-
+/*
 function getTotalDamage() {
   let attacksArray = weapons.map(weapons => weapons.attack);
 
@@ -34,6 +29,11 @@ function getTotalDamage() {
 
   return totalDamage;
 };
+*/
+function getTotalDamage() {
+  return weapons.reduce((sum, elem) => sum + elem.attack, 0);
+};
+
 
 
 
