@@ -18,45 +18,31 @@ function sum(...args) {
 };
 
 function compareArrays(arr1, arr2 ) {
-  // сравнение массивов
-  if (arr1.length === arr2.length) {
-    //запускаем проверку для каждого элемента
-    return arr1.every(compare); 
+  return arr1.length === arr2.length && arr1.every((value, i) => value === arr2[i]);
+ };
 
-  } else {
-    return false;
-  };
 
-  //функция проверки получает значение элемента массива из метода every
-  function compare(value) {
-    let index = arr1.indexOf(value);
-    return value === arr2[index];
-  };
-};
-
-function memorize(sum, limit) {
+function memorize(fn, limit) {
   let memory = [];
 
   return function mSum(...args) {
-
     let memo = memory.find(element => compareArrays(element.args, args));
 
-    if (memo !== undefined) {
+    if (memo) {
       return memo.result;
+    };
+    
+    let result = fn(...args);
 
-    } else {
-      let result = sum(...args);
+    memory.push({
+      args,
+      result
+    });
 
-      memory.push({
-        args,
-        result
-      });
-
-      if (memory.length > limit) {
-        memory.shift();
-      };
-      
-      return result;
-    }
+    if (memory.length > limit) {
+      memory.shift();
+    };
+    
+    return result;
   };
 };
